@@ -1,12 +1,13 @@
 /**
  * Provides a fancy animation to the download icon.
  *
- * Copyright (C) 2014 Peter Wu <lekensteyn@gmail.com>
+ * Copyright (C) 2014 Peter Wu <peter@lekensteyn.nl>
  */
 
 'use strict';
 /* jshint browser:true, devel:true */
 /* globals chrome */
+/* exported progress */
 var progress = (function () {
     // number of slices in a round
     var ROTATIONS = 8;

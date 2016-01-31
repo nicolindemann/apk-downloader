@@ -1,7 +1,7 @@
 /**
  * Authors:
- *      Rob Wu <gwnRob@gmail.com>
- *      Peter Wu <lekensteyn@gmail.com>
+ *      Rob Wu <rob@robwu.nl>
+ *      Peter Wu <peter@lekensteyn.nl>
  *
  * Released under the terms of GPLv3+.
  */
@@ -9,6 +9,7 @@
 'use strict';
 /* jshint browser:true, devel:true, eqnull:true */
 /* globals chrome, JXG, MarketSession, progress */
+/* exported processAsset */
 
 /**
  * URL used for requesting a special download token.
@@ -162,6 +163,13 @@ function downloadAPK(marketda, url, filename, storeId, tabId) {
 
     setMDACookie(storeId, marketda, function() {
         console.log("Trying to download " + url + " and save it as " + filename);
+        if (chrome.downloads) {
+            chrome.downloads.download({
+                url: url,
+                filename: filename
+            });
+            return;
+        }
         chrome.tabs.sendMessage(tabId, {
             action: "download",
             url: url,

@@ -5,8 +5,13 @@
  * Authors:
  *      redphoenix89 <http://codekiem.com/>
  *      Stephan Schmitz <eyecatchup@gmail.com>
- *      Peter Wu <lekensteyn@gmail.com>
+ *      Peter Wu <peter@lekensteyn.nl>
  */
+
+'use strict';
+/* jshint browser:true, devel:true */
+/* globals openTab, processAsset */
+/* exported MarketSession */
 
 /**
  * Serialize Javascript types in a special format used by MarketSession.
@@ -27,7 +32,7 @@ var Utils = {
                 elm += 128;
             }
             data.push(elm);
-            if (num == 0) {
+            if (num === 0) {
                 break;
             }
         }
